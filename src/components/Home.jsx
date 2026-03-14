@@ -1,33 +1,36 @@
 import { useState } from "react";
 
 export default function Home({ onStart }) {
-  const [nbPiles, setNbPiles] = useState(3);
+  const [nbLignes, setNbLignes] = useState(3);
 
   return (
     <div className="home">
       <h1 className="title">bernimGame</h1>
 
-      {/* Slider */}
+   <div className="formContainer">
+       {/* Slider */}
       <label>
-        Nombre de piles : {nbPiles}
+        Nombre de lignes : {nbLignes}
         <input
           type="range"
           min="3"
           max="5"
-          value={nbPiles}
-          onChange={(e) => setNbPiles(Number(e.target.value))}
+          class="slider"
+          value={nbLignes}
+          onChange={(e) => setNbLignes(Number(e.target.value))}
         />
       </label>
 
       {/* Animation dynamique */}
       <div className="preview">
-        {Array.from({ length: nbPiles }).map((_, i) => (
+        {Array.from({ length: nbLignes }).map((_, i) => (
           <div key={i} className="baton">|</div>
         ))}
       </div>
 
+   </div>
       {/* Boutons */}
-      <button className="btn" onClick={() => onStart(nbPiles)}>
+      <button className="btn" onClick={() => onStart(nbLignes)}>
         Jouer
       </button>
 

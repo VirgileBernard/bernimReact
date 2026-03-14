@@ -34,7 +34,7 @@ export default function Game( {nbPiles}) {
     }
     
     // qd c'est l'IA qui joue
-    useEffect( () => {
+    useEffect(() => {
         if (tour === "ordi" && winner === null){
             setTimeout(() => {
                 const [ligne, choix] = coupIA(pyramide)
