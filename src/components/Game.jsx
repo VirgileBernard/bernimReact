@@ -3,6 +3,7 @@ import { coupIA } from "./IA";
 import Endgame from "./Endgame";
 import Messages from "./Messages";
 import Pyramide from "./Pyramide";
+import confetti from "canvas-confetti";
 
 export default function Game({ nbPiles }) {
   const [pyramide, setPyramide] = useState([]);
@@ -69,6 +70,25 @@ function addMessage(text, className) {
       }, 800);
     }
   }, [tour]);
+
+
+  // confettis de victoire
+  useEffect(() => {
+    if(winner === "joueur1") {
+      confetti({
+        particleCount: 150,
+        spread: 80,
+        origin: { y: 0.6}
+      });
+      setTimeout(() => {
+        confetti({
+          particleCount: 100,
+          spread: 60,
+          origin: {y : 0.4}
+        });
+      }, 300);
+    }
+  }, [winner])
 
   return (
     <div className="home">
