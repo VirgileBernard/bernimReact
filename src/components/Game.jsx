@@ -9,6 +9,8 @@ export default function Game({ nbPiles }) {
   const [tour, setTour] = useState("joueur1");
   const [winner, setWinner] = useState(null);
   const [messages, setMessages] = useState([]);
+  const [hovered, setHovered] = useState( {ligne:null, index:null });
+  const [disappear, setDisappear] = useState ( {ligne:null, index:null });
   
 
   // Initialisation
@@ -83,7 +85,13 @@ function addMessage(text, className) {
       {winner ? (
         <Endgame winner={winner} />
       ) : (
-        <Pyramide pyramide={pyramide} jouerCoup={jouerCoup} />
+        <Pyramide 
+        pyramide={pyramide}
+        jouerCoup={jouerCoup}
+        hovered = {hovered}
+        setHovered = {setHovered}
+        disappear = {disappear}
+        setDisappear = {setDisappear} />
       )}
 
       <button className="btn" onClick={() => window.location.reload()}>

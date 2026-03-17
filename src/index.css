@@ -6,11 +6,7 @@
     --text-font: "Montserrat", sans-serif;
     --funny-font: "Parisienne", sans-serif;
     --borderRadius : 8px;
-    /* --bg-dark : red; */
-}
 
-/* [data-theme="dark"]  */
-:root{
   --bg-dark: hsl(0 0% 0%);
   --bg: hsl(0 0% 10%);
   --bg-light: hsl(0 0% 15%);
@@ -71,11 +67,11 @@ body{
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 2rem;
+    /* gap: 2rem; */
     /* height: 70vh; */
 }
 
-.preview {
+.preview-lignes {
   margin: 1rem auto 2rem auto;
   display: flex;
   flex-direction: column;
@@ -152,6 +148,7 @@ width: clamp(60px, 6vw, 80px); */
 .baton.preview {
   opacity: 0.5;
   transform: scale(0.9);
+  background-color: var(--redDelete);
 }
 
 .baton.disappear {
