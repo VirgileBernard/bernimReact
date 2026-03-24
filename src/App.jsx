@@ -6,16 +6,20 @@ import ActionBar from "./components/ActionBar";
 
 export default function App() {
   const [nbPiles, setNbPiles] = useState(null);
+  const [pendingLignes, setPendingLignes] = useState(3); // valeur du slider
 
   return (
     <Layout>
       {nbPiles === null ? (
         <>
-          <Home onStart={setNbPiles} />
+          <Home 
+            nbLignes={pendingLignes}
+            setNbLignes={setPendingLignes}
+            onStart={() => setNbPiles(pendingLignes)}
+          />
 
-          {/* Bouton Jouer dans la barre d'action */}
           <ActionBar>
-            <button className="btn" onClick={() => setNbPiles(3)}>
+            <button className="btn" onClick={() => setNbPiles(pendingLignes)}>
               Jouer
             </button>
           </ActionBar>
@@ -24,7 +28,6 @@ export default function App() {
         <>
           <Game nbPiles={nbPiles} />
 
-          {/* Bouton Recommencer dans la barre d'action */}
           <ActionBar>
             <button className="btn" onClick={() => window.location.reload()}>
               Recommencer
