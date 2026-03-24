@@ -3,7 +3,7 @@
 Bienvenue dans **BernimReact**, une petite application React développée avec Vite.  
 Elle inclut un thème clair/sombre, des animations de confettis, une interface responsive et une structure de composants propre et moderne.
 
-testable à cette adresse : 
+jouable à cette adresse : 
 https://virgilebernard.github.io/bernimReact/
 ---
 
