@@ -76,17 +76,10 @@ function addMessage(text, className) {
   useEffect(() => {
     if(winner === "joueur1") {
       confetti({
-        particleCount: 150,
+        particleCount: 450,
         spread: 80,
         origin: { y: 0.6}
       });
-      setTimeout(() => {
-        confetti({
-          particleCount: 100,
-          spread: 60,
-          origin: {y : 0.4}
-        });
-      }, 300);
     }
   }, [winner])
 
