@@ -23,26 +23,33 @@ export default function Game({ nbPiles }) {
     setTour(Math.random() < 0.5 ? "joueur1" : "ordi");
   }, []);
 
+  function addMessage(joueur, choix, ligne) {
+  const acteur = joueur === "joueur1" ? "Tu" : "Je";
+  const pluriel = choix > 1 ? "s" : "";
+  const ligneAffichee = ligne + 1; // pour afficher ligne 1, 2, 3...
 
-function addMessage(text, className) {
+  const text = `${acteur} retire ${choix} bâton${pluriel} de la ligne ${ligneAffichee}`;
+
   setMessages(prev => {
     let updated = [
       ...prev,
       {
-        id: Date.now() + Math.random(), // id unique
+        id: Date.now() + Math.random(),
         text,
-        class: className,
+        class: joueur,
         appear: true
       }
     ];
 
     if (updated.length > 4) {
-      updated.shift(); // supprime le plus ancien
+      updated.shift();
     }
 
     return updated;
   });
 }
+
+
 
 
 useEffect(() => {
@@ -58,7 +65,8 @@ useEffect(() => {
     newP[ligne] -= choix;
 
     setPyramide(newP);
-    addMessage(`${joueur} retire ${choix} bâton(s)`, joueur);
+  addMessage(joueur, choix, ligne);
+
 
     if (newP.reduce((a, b) => a + b, 0) === 0) {
       setWinner(joueur);
