@@ -5,7 +5,7 @@ export default function Home({ onStart }) {
 
   return (
     <div className="home">
-      <h1 className="title">bernimGame</h1>
+      {/* <h1 className="title">bernimGame</h1> */}
 
    <div className="formContainer">
        {/* Slider */}
