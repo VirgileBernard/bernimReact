@@ -97,19 +97,23 @@ body{
 
 .home {
   text-align: center;
-  /* padding: 2rem; */
 }
 
  /* btn fixé en bas de l'écran */
 .action-bar {
   position: fixed;
-  bottom: 5vh;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   gap: 1rem;
   z-index: 10;
+
+  /* Fallback + iPhone safe area */
+  padding-bottom: 20px;
+  padding-bottom: calc(env(safe-area-inset-bottom) + 20px);
 }
+
 
 .btn{
   padding: 0.8rem 1.5rem;
