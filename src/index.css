@@ -3,12 +3,8 @@
 
 
 :root{
-  transition:
-   background-color .4s ease,
-    color .4s ease,
-    border-color .4s ease,
-    fill .4s ease,
-    stroke .4s ease;
+  transition: all .4s ease;
+  
 
     --text-font: "Montserrat", sans-serif;
     --funny-font: "Parisienne", sans-serif;
@@ -70,30 +66,12 @@ body{
   color: var(--text);
 }
 
-.baton,
-.toggle-btn,
-.formContainer,
-.pyramide,
-.ligne,
-.message,
-.title,
-.slider,
-body{
-  transition: background-color .4s ease, color .4s ease, border-color .4s ease;
-}
-
-
-.header {
-  position: relative;
-  padding: 1rem;
-  text-align: center;
-}
 
 .title {
   font-size: 2rem;
   margin-bottom: 2rem;
   text-align: center;
-  margin-top: 10vh;
+  margin-top: 9vh;
 }
 
 
@@ -231,7 +209,7 @@ width: clamp(60px, 6vw, 80px); */
     gap: .5rem;
 }
 
-
+.joueur2,
 .ordi{
   color: var(--action);
 }
@@ -305,37 +283,8 @@ width: clamp(60px, 6vw, 80px); */
 }
 
 
-
-.modeContainer {
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.modeButtons {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.modeBtn {
-  padding: 10px 20px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  background: #ddd;
-  transition: 0.2s;
-}
-
-.modeBtn.selected {
-  background: #4a90e2;
-  color: white;
-  font-weight: bold;
-}
-
-
 .modeContainer,
-.difficultyContainer {
+.difficultyContainer{
   margin-bottom: 20px;
   text-align: center;
 }
@@ -349,16 +298,39 @@ width: clamp(60px, 6vw, 80px); */
 }
 
 .modeBtn {
-  padding: 10px 20px;
-  border-radius: 8px;
-  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: var(--borderRadius);
+  border: var(--action) 1px solid;
   cursor: pointer;
-  background: #ddd;
-  transition: 0.2s;
+  background-color: var(--bg-light);
+  color: var(--text);
+  font-size: 1rem;
+  transition: all 0.3s ease;
 }
 
 .modeBtn.selected {
-  background: #4a90e2;
-  color: white;
+  background: var(--action);
+  color: var(--text-contrast);
   font-weight: bold;
+}
+
+.namesContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.inputName{
+  padding: 0.8rem 1.5rem;
+  border-radius: var(--borderRadius);
+  border: var(--action) 1px solid;
+  background-color: var(--bg-light);
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.inputName:focus {
+  border-color: 2px solid var(--action);
+  box-shadow: 0 0 5px var(--action);
 }

@@ -9,8 +9,8 @@ export default function App() {
   const [pendingLignes, setPendingLignes] = useState(3); // valeur du slider
   const [modeJeu, setModeJeu] = useState("ia");
   const [difficulte, setDifficulte] = useState("facile");
-  const [joueur1, setJoueur1] = useState("Joueur 1");
-  const [joueur2, setJoueur2] = useState("Joueur 2");
+  const [joueur1, setJoueur1] = useState("");
+  const [joueur2, setJoueur2] = useState("");
 
 
   return (

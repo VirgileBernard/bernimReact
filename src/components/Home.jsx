@@ -41,16 +41,31 @@ export default function Home({
           {modeJeu === "pvp" && (
   <div className="namesContainer">
     <input
-      type="text"
-      placeholder="Nom du joueur 1"
-      value={joueur1}
-      onChange={(e) => setJoueur1(e.target.value)}
-    />
+  className="inputName"
+  type="text"
+  placeholder="Nom du joueur 1"
+  value={joueur1}
+  onFocus={() => {
+    if (joueur1 === "Joueur 1") setJoueur1("");
+  }}
+  onBlur={() => {
+    if (joueur1.trim() === "") setJoueur1("");
+  }}
+  onChange={(e) => setJoueur1(e.target.value)}
+/>
+
 
     <input
+     className="inputName"
       type="text"
       placeholder="Nom du joueur 2"
       value={joueur2}
+     onFocus={() => {
+    if (joueur2 === "Joueur 2") setJoueur2("");
+  }}
+  onBlur={() => {
+    if (joueur2.trim() === "") setJoueur2("");
+  }}
       onChange={(e) => setJoueur2(e.target.value)}
     />
   </div>
