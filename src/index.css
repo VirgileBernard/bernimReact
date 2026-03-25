@@ -188,7 +188,7 @@ width: clamp(60px, 6vw, 80px); */
     text-align: center;
     gap: 1rem;
     /* height: 50vh; */
-      padding-bottom: 120px;
+      margin-bottom: 120px;
 }
 
 
