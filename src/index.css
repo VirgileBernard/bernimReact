@@ -97,7 +97,6 @@ body{
 
 .home {
   text-align: center;
-  padding-bottom: 120px;
 }
 
 .action-bar {
@@ -188,7 +187,8 @@ width: clamp(60px, 6vw, 80px); */
     align-items: center;
     text-align: center;
     gap: 1rem;
-    height: 50vh;
+    /* height: 50vh; */
+      padding-bottom: 120px;
 }
 
 
