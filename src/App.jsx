@@ -9,6 +9,9 @@ export default function App() {
   const [pendingLignes, setPendingLignes] = useState(3); // valeur du slider
   const [modeJeu, setModeJeu] = useState("ia");
   const [difficulte, setDifficulte] = useState("facile");
+  const [joueur1, setJoueur1] = useState("Joueur 1");
+  const [joueur2, setJoueur2] = useState("Joueur 2");
+
 
   return (
     <Layout>
@@ -21,6 +24,10 @@ export default function App() {
          setModeJeu={setModeJeu}
          difficulte={difficulte}
          setDifficulte={setDifficulte}
+         joueur1={joueur1}
+         setJoueur1={setJoueur1}
+         joueur2={joueur2}
+         setJoueur2={setJoueur2}
          onStart={() => setNbPiles(pendingLignes)}
          />
 
@@ -34,7 +41,10 @@ export default function App() {
         <>
           <Game
           nbPiles={nbPiles}
-          difficulte={difficulte} />
+          difficulte={difficulte}
+          modeJeu={modeJeu}
+          joueur1={joueur1}
+          joueur2={joueur2} />
 
           <ActionBar>
             <button className="btn" onClick={() => window.location.reload()}>

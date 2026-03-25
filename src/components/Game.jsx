@@ -5,7 +5,7 @@ import Messages from "./Messages";
 import Pyramide from "./Pyramide";
 import confetti from "canvas-confetti";
 
-export default function Game({ nbPiles, difficulte }) {
+export default function Game({ nbPiles, difficulte, modeJeu, joueur1, joueur2 }) {
   const [pyramide, setPyramide] = useState([]);
   const [tour, setTour] = useState("joueur1");
   const [winner, setWinner] = useState(null);
@@ -24,12 +24,20 @@ export default function Game({ nbPiles, difficulte }) {
     setTour("joueur1");
   }, []);
 
-  function addMessage(joueur, choix, ligne) {
-  const acteur = joueur === "joueur1" ? "Tu" : "Je";
+function addMessage(joueur, choix, ligne) {
+  let acteur;
+
+  if (modeJeu === "ia") {
+    acteur = joueur === "joueur1" ? "Tu" : "Je";
+  } else {
+    acteur = joueur === "joueur1" ? joueur1 : joueur2;
+  }
+
   const pluriel = choix > 1 ? "s" : "";
-  const ligneAffichee = ligne + 1; // pour afficher ligne 1, 2, 3...
+  const ligneAffichee = ligne + 1;
 
   const text = `${acteur} retire ${choix} bâton${pluriel} de la ligne ${ligneAffichee}`;
+
 
   setMessages(prev => {
     let updated = [
@@ -74,12 +82,17 @@ useEffect(() => {
       return;
     }
 
-    setTour(joueur === "joueur1" ? "ordi" : "joueur1");
+    if (modeJeu === "ia") {
+  setTour(joueur === "joueur1" ? "ordi" : "joueur1");
+} else {
+  setTour(joueur === "joueur1" ? "joueur2" : "joueur1");
+}
+
   }
 
   // Tour IA
   useEffect(() => {
-    if (tour === "ordi" && winner === null) {
+    if (modeJeu==="ia" && tour === "ordi" && winner === null) {
       setTimeout(() => {
         const [ligne, choix] = coupIA(pyramide, difficulte);
         jouerCoup(ligne, choix, "ordi");
@@ -107,13 +120,26 @@ return (
       )}
 
       {!winner && (
-        <p className={`tour-actuel ${tour}`}>
-          {tour === "joueur1" ? "C'est ton tour !" : "C'est mon tour !"}
-        </p>
+       <p className={`tour-actuel ${tour}`}>
+{modeJeu === "ia"
+  ? tour === "joueur1"
+    ? "C'est ton tour !"
+    : "C'est mon tour !"
+  : tour === "joueur1"
+    ? `C'est à ${joueur1} de jouer`
+    : `C'est à ${joueur2} de jouer`
+}
+
+</p>
+
       )}
 
       {winner ? (
-        <Endgame winner={winner} />
+        <Endgame
+        winner={winner}
+        modeJeu={modeJeu}
+        joueur1={joueur1}
+        joueur2={joueur2} />
       ) : (
         <Pyramide 
           pyramide={pyramide}
@@ -122,6 +148,7 @@ return (
           setHovered={setHovered}
           disappear={disappear}
           setDisappear={setDisappear}
+          tour={tour}
         />
       )}
 

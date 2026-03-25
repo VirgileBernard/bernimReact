@@ -4,7 +4,8 @@ export default function Pyramide({
   hovered,
   setHovered,
   disappear,
-  setDisappear 
+  setDisappear,
+  tour
   }) {
   return (
     <div className="pyramide">
@@ -36,7 +37,7 @@ export default function Pyramide({
 
                   // jouer le coup après l’animation
                   setTimeout(() => {
-                    jouerCoup(i, b + 1, "joueur1");
+                    jouerCoup(i, b + 1, tour);
                     setDisappear({ ligne: null, index: null });
                   }, 300);
                 }}

@@ -1,9 +1,22 @@
-export default function Endgame({ winner }) {
+export default function Endgame({ winner, modeJeu, joueur1, joueur2 }) {
+
+  let message;
+
+  if (modeJeu === "ia") {
+    // Mode IA
+    message = winner === "joueur1"
+      ? "Tu as gagné !"
+      : "J'ai gagné !";
+  } else {
+    // Mode PvP
+    message = winner === "joueur1"
+      ? `${joueur1} a gagné !`
+      : `${joueur2} a gagné !`;
+  }
+
   return (
     <div className="endgame-container">
-      <h1>
-        {winner === "joueur1" ? "Tu as gagné :)" : "Tu as perdu :("}
-      </h1>
+      <h2>{message}</h2>
     </div>
   );
 }

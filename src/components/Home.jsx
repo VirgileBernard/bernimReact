@@ -5,6 +5,10 @@ export default function Home({
   setModeJeu,
   difficulte,
   setDifficulte,
+  joueur1,
+  setJoueur1,
+  joueur2,
+  setJoueur2,
   onStart
 }) {
   return (
@@ -13,7 +17,7 @@ export default function Home({
 
         {/* Choix du mode */}
         <div className="modeContainer">
-          <h2>Choisir son adversaire</h2>
+          <h2>Qui allez-vous affronter ?</h2>
 
           <div className="modeButtons">
             <button
@@ -31,6 +35,28 @@ export default function Home({
             </button>
           </div>
         </div>
+
+         {/* input name visible uniquement si on select mode PVP  */}
+        
+          {modeJeu === "pvp" && (
+  <div className="namesContainer">
+    <input
+      type="text"
+      placeholder="Nom du joueur 1"
+      value={joueur1}
+      onChange={(e) => setJoueur1(e.target.value)}
+    />
+
+    <input
+      type="text"
+      placeholder="Nom du joueur 2"
+      value={joueur2}
+      onChange={(e) => setJoueur2(e.target.value)}
+    />
+  </div>
+)}
+
+          {/* bouton de difficulté visible uniquement en mode IA  */}
 
         {/* Difficulté IA */}
         {modeJeu === "ia" && (
